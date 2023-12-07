@@ -10,7 +10,7 @@ const useSignup = () => {
     console.log(e.target);
 
     try {
-      return axios.post("http://localhost:3000/signup", {
+      return axios.post(`${import.meta.env.VITE_URL}/signup`, {
         username: e.target[0].value,
         password: e.target[1].value,
         passwordConfirm: e.target[2].value,
@@ -22,7 +22,7 @@ const useSignup = () => {
 
   async function handleLogout(e) {
     try {
-      const data = await axios.get("http://localhost:3000/user/signout");
+      const data = await axios.get(`${import.meta.env.VITE_URL}/user/signout`);
       window.location.reload(false);
     } catch (err) {
       console.log(err);

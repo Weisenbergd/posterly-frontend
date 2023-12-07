@@ -13,7 +13,7 @@ export const useDeleteReply = (reply, post) => {
 
     try {
       return axios.delete(
-        `http://localhost:3000/post/${post._id}/${reply._id}`,
+        `${import.meta.env.VITE_URL}/post/${post._id}/${reply._id}`,
         {
           user,
         }

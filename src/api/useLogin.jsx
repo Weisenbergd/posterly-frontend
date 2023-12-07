@@ -7,7 +7,7 @@ const useLogin = () => {
   async function checkUser(e) {
     e.preventDefault();
     try {
-      return axios.post("http://localhost:3000/user", {
+      return axios.post(`${import.meta.env.VITE_URL}/user`, {
         username: e.target[0].value,
         password: e.target[1].value,
       });
@@ -18,7 +18,7 @@ const useLogin = () => {
 
   async function handleLogout(e) {
     try {
-      const data = await axios.get("http://localhost:3000/user/signout");
+      const data = await axios.get(`${import.meta.env.VITE_URL}/user/signout`);
       window.location.reload(false);
     } catch (err) {
       console.log(err.response.data);

@@ -12,7 +12,7 @@ export const useDeletePost = (post) => {
   async function deletePost(e) {
     e.preventDefault();
     try {
-      return axios.delete(`http://localhost:3000/post/${post._id}`);
+      return axios.delete(`${import.meta.env.VITE_URL}/post/${post._id}`);
     } catch (err) {
       console.log(err);
     }

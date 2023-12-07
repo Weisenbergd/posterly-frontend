@@ -9,7 +9,7 @@ export const usePostPost = () => {
     e.preventDefault();
 
     try {
-      return axios.post("http://localhost:3000", {
+      return axios.post(import.meta.env.VITE_URL, {
         title: e.target[0].value,
         content: e.target[1].value,
       });

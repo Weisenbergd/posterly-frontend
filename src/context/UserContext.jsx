@@ -11,17 +11,20 @@ function UserProvider({ children }) {
 
   async function getLoggedIn() {
     try {
-      const { data } = await axios.get("http://localhost:3000/user/loggedIn");
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_URL}/user/loggedIn`
+      );
       setIsLoggedIn(data.loggedIn || false);
       setUser(data.user.username);
       return data;
     } catch (err) {
-      console.log("automatic user loggin", err);
+      console.log("automatic login error");
     }
   }
   const { data } = useQuery({
     queryKey: ["loggedIn"],
     queryFn: getLoggedIn,
+    onError: (err) => console.log(err.response.data),
   });
 
   return (

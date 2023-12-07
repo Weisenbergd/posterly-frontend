@@ -9,7 +9,7 @@ export const usePostReply = () => {
   async function postReply(e) {
     e.preventDefault();
     try {
-      return axios.post(`http://localhost:3000/post/${id}`, {
+      return axios.post(`${import.meta.env.VITE_URL}/post/${id}`, {
         reply: e.target[0].value,
       });
     } catch (err) {

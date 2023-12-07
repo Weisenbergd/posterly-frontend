@@ -3,10 +3,8 @@ import { useContext } from "react";
 import { GlobalContext } from "../context/Global";
 
 export const useGetPost = () => {
-  const { port } = useContext(GlobalContext);
-  console.log(port);
   const getPosts = async () => {
-    const response = await fetch("http://localhost:3000/");
+    const response = await fetch(import.meta.env.VITE_URL);
     const data = await response.json();
     return data.posts;
   };

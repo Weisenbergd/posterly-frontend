@@ -40,6 +40,7 @@ const Nav = ({ modal, setModal }) => {
             blog
           </Link>
         </div>
+
         <div className="nav__options box">
           {isLoggedIn ? (
             <div>

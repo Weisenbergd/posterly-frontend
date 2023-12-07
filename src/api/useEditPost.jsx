@@ -7,7 +7,7 @@ export const useEditPost = (post) => {
   async function editPost(e) {
     e.preventDefault();
     try {
-      return axios.patch(`http://localhost:3000/post/${post._id}`, {
+      return axios.patch(`${import.meta.env.VITE_URL}/post/${post._id}`, {
         _id: post._id,
         content: e.target[0].value,
         target: "post",
