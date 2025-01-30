@@ -28,7 +28,7 @@ const useLogin = () => {
   const loginMutation = useMutation({
     mutationFn: checkUser,
     onSuccess: (data) => window.location.reload(false),
-    onError: (err) => (loginMutation.error = err.response.data.message),
+    onError: (err) => console.log(err),
   });
 
   const logoutMutation = useMutation({
