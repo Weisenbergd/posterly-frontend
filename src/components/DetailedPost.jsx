@@ -3,7 +3,7 @@ import { formatDate } from "../util/formatDate";
 import styled from "styled-components";
 import trashImage from "../assets/trash.svg";
 import editImage from "../assets/edit.svg";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { useDeletePost } from "../api/useDeletePost";
 import PostForm from "./PostForm";
@@ -21,6 +21,11 @@ const DetailedPost = () => {
   const [modal, setModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [replyModal, setReplyModal] = useState(false);
+
+  useEffect(() => {
+    console.log("post", post);
+    console.log("error", error);
+  });
 
   if (isLoading) return <p>loading...</p>;
   if (error) return <p>something went wrong...</p>;
