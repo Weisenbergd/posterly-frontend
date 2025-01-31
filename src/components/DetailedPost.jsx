@@ -14,8 +14,6 @@ import ModalOverlay from "./ModalOverlay";
 import ConfirmForm from "./ConfirmForm";
 
 const DetailedPost = () => {
-  return <p>test</p>;
-
   const { data: post, isLoading, error } = useGetSinglePost();
   const { user } = useContext(UserContext);
   const { deleteMutation } = useDeletePost(post);
