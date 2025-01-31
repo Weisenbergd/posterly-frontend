@@ -3,21 +3,19 @@ import { useParams } from "react-router-dom";
 
 export const useGetSinglePost = () => {
   const { id } = useParams();
-  console.log("post id:", id);
+  console.log("Fetching post with ID:", id); // Log the ID
+
   async function getPost({ queryKey }) {
-    console.log("Fetching post with ID:", queryKey[1]); // Debugging
-    const response = await fetch(
-      `${import.meta.env.VITE_URL}/post/${queryKey[1]}`
-    );
+    const url = `${import.meta.env.VITE_URL}/post/${queryKey[1]}`;
+    console.log("Request URL:", url); // Log the full request URL
+    const response = await fetch(url);
     const data = await response.json();
-    console.log("Fetched data:", data); // Debugging
     return data.post;
   }
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["post", id],
     queryFn: getPost,
-    enabled: !!id, // Ensures query runs only if id exists
   });
 
   return { isLoading, error, data };
