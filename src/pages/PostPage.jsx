@@ -5,12 +5,13 @@ import styled from "styled-components";
 
 const PostPage = () => {
   // const { data: post, isLoading, error } = useGetSinglePost();
+
   return (
     <>
       <p>test</p>
-      {/* <StyledImg className="background" src={backgroundImage} />
+      <StyledImg className="background" src={backgroundImage} />
       <DetailedPost />
-      <ReplyList /> */}
+      {/* <ReplyList /> */}
     </>
   );
 };
