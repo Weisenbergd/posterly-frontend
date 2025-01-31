@@ -7,9 +7,10 @@ const PostPage = () => {
   // const { data: post, isLoading, error } = useGetSinglePost();
   return (
     <>
-      <StyledImg className="background" src={backgroundImage} />
+      <p>test</p>
+      {/* <StyledImg className="background" src={backgroundImage} />
       <DetailedPost />
-      <ReplyList />
+      <ReplyList /> */}
     </>
   );
 };
