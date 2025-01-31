@@ -8,10 +8,9 @@ const PostPage = () => {
 
   return (
     <>
-      <p>test</p>
       <StyledImg className="background" src={backgroundImage} />
       <DetailedPost />
-      {/* <ReplyList /> */}
+      <ReplyList />
     </>
   );
 };
