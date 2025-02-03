@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 export const useEditPost = (post) => {
   const navigate = useNavigate();
   async function editPost(e) {
+    e.preventDefault();
     console.log("sldkjf;alskjdf;ajlskdf", e);
     e.preventDefault();
     if (!e) throw Error("eror no event passed to useEditPost");
@@ -20,7 +21,11 @@ export const useEditPost = (post) => {
   }
 
   const editPostMutation = useMutation({
-    mutationFn: (e) => editPost,
+    mutationFn: (e) => {
+      e.preventDefault();
+      console.log(e);
+      editPost;
+    },
 
     onSuccess: (e) => {
       console.log("post editted");

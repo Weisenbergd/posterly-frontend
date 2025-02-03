@@ -18,7 +18,7 @@ export const useEditReply = (post, reply) => {
 
     try {
       return axios.patch(
-        `${import.meta.env.VITE_URL}/${post._id}/${reply._id}`,
+        `${import.meta.env.VITE_URL}/post/${post._id}/${reply._id}`,
         {
           user,
           content,
