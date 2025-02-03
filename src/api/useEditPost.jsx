@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 export const useEditPost = (post) => {
   const navigate = useNavigate();
   async function editPost(e) {
+    console.log("sldkjf;alskjdf;ajlskdf", e);
     e.preventDefault();
+    if (!e) throw Error("eror no event passed to useEditPost");
     try {
       return axios.patch(`${import.meta.env.VITE_URL}/post/${post._id}`, {
         _id: post._id,
@@ -18,9 +20,11 @@ export const useEditPost = (post) => {
   }
 
   const editPostMutation = useMutation({
-    mutationFn: (e) => editPost(e),
-    onSuccess: () => {
+    mutationFn: (e) => editPost,
+
+    onSuccess: (e) => {
       console.log("post editted");
+      console.log("e", e);
       navigate(0);
     },
     onError: (err) => console.log(err.response.data),
