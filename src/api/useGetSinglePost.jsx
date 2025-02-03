@@ -6,7 +6,7 @@ export const useGetSinglePost = () => {
   console.log("Fetching post with ID:", id); // Log the ID
 
   async function getPost({ queryKey }) {
-    const url = `${import.meta.env.VITE_URL}post/${queryKey[1]}`;
+    const url = `${import.meta.env.VITE_URL}/post/${queryKey[1]}`;
     console.log("Request URL:", url); // Log the full request URL
     const response = await fetch(url);
     const data = await response.json();
