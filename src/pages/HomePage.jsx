@@ -7,13 +7,17 @@ import { UserContext } from "../context/UserContext";
 import NewPostForm from "../components/PostForm";
 import PostButton from "../components/styling/PostButton";
 import backgroundImage from "../assets/background.svg";
+import PageLoader from "../components/Loading";
 
 const HomePage = () => {
   const { data, isPending, error } = useGetPost();
+  const { user } = useContext(UserContext);
+
+  const [hide, setHide] = useState(false);
 
   const [modal, setModal] = useState(false);
 
-  if (isPending) return <p>loading...</p>;
+  if (isPending) return <PageLoader />;
   if (error) return <p>error</p>;
 
   return (
@@ -21,14 +25,32 @@ const HomePage = () => {
       <StyledImg className="background" src={backgroundImage} />
       <Title />
 
-      <StyledDiv>
-        <PostButton onClick={() => setModal(!modal)} className="author card">
-          new post
-        </PostButton>
-      </StyledDiv>
-
       <NewPostForm modal={modal} setModal={setModal} />
 
+      <DevDiv>
+        {!hide && (
+          <>
+            <p>login with:</p>
+            <p>username: drew</p>
+            <p>password: 123</p>
+            <p>or feel free to make new login -- no verification</p>
+            <p>only 1 page</p>
+            <p>oldest posts get deleted when pushed out</p>
+          </>
+        )}
+
+        <button onClick={() => setHide(!hide)}>
+          {hide ? "show dev note" : "hide note"}
+        </button>
+      </DevDiv>
+
+      {user && (
+        <StyledDiv>
+          <PostButton onClick={() => setModal(!modal)} className="author card">
+            new post
+          </PostButton>
+        </StyledDiv>
+      )}
       <StyledUl>
         {data.map((post) => {
           return (
@@ -44,10 +66,27 @@ const HomePage = () => {
 
 export default HomePage;
 
-const StyledDiv = styled.div`
+const DevDiv = styled.div`
+  background-color: white;
+  width: fit-content;
   position: absolute;
-  right: 3.8rem;
-  top: 6rem;
+  top: 4rem;
+  right: 0;
+  border: 1px solid black;
+`;
+
+const StyledDiv = styled.div`
+  position: initial;
+  display: flex;
+  justify-content: start;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20rem;
+
+  button {
+    width: 100%;
+  }
 
   @media screen and (max-width: 650px) {
     position: initial;
@@ -56,7 +95,7 @@ const StyledDiv = styled.div`
     margin-bottom: 2rem;
 
     button {
-      width: 80%;
+      width: 100%;
     }
   }
 `;

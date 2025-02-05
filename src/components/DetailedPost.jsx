@@ -12,6 +12,7 @@ import PostButton from "./styling/PostButton";
 import ReplyForm from "./ReplyForm";
 import ModalOverlay from "./ModalOverlay";
 import ConfirmForm from "./ConfirmForm";
+import PageLoader from "./Loading";
 
 const DetailedPost = () => {
   const { data: post, isLoading, error } = useGetSinglePost();
@@ -27,7 +28,7 @@ const DetailedPost = () => {
     console.log("error", error);
   });
 
-  if (isLoading) return <p>loading...</p>;
+  if (isLoading) return <PageLoader />;
   if (error) return <p>something went wrong...</p>;
 
   return (
