@@ -1,16 +1,43 @@
 import { motion } from "framer-motion";
+import styled, { keyframes } from "styled-components";
 
 const PageLoader = () => {
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <motion.div
-        className="w-16 h-16 border-4 border-t-blue-500 border-gray-300 rounded-full animate-spin"
+    <LoaderContainer>
+      <Spinner
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-      ></motion.div>
-    </div>
+      />
+    </LoaderContainer>
   );
 };
+
+const spin = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`;
+
+const LoaderContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* backdrop-filter: blur(10px); */
+  z-index: 9999;
+`;
+
+const Spinner = styled(motion.div)`
+  width: 4rem;
+  height: 4rem;
+  border: 4px solid var(--color-main-light);
+  border-top-color: var(--color-main-dark);
+  border-radius: 50%;
+  animation: ${spin} 1s linear infinite;
+`;
 
 export default PageLoader;
